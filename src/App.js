@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import loadScriptAsync from './loadScriptAsync';
 
 class App extends Component {
+  componentDidMount() {
+    loadScriptAsync('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'bootstraper', 3000)
+      .then((data) => {
+        console.log('successs')
+        console.log(data)
+      })
+      .catch((error) => {
+        console.log('error')
+        console.log(error)
+      });
+  }
   render() {
     return (
       <div className="App">

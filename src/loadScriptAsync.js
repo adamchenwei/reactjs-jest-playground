@@ -1,5 +1,6 @@
-export default function loadScriptAsync(scriptUrl, resolveCallback, rejectCallback) {
-  return new Promise(function() {
+export default function loadScriptAsync(scriptUrl, customLoadName, timeoutDuration) {
+  const FORCED_TIMEOUT_IN_MS = timeoutDuration || 30000;
+  return new Promise(function(resolveCallback, rejectCallback) {
     let script = document.createElement('script');
     script.src = scriptUrl;
     script.type = 'text/javascript';
@@ -9,8 +10,11 @@ export default function loadScriptAsync(scriptUrl, resolveCallback, rejectCallba
     script.addEventListener('error', rejectCallback, { once: true });
     script.addEventListener('load', resolveCallback, { once: true });
     document.head.appendChild(script);
-    setTimeout(function() {
-      resolveCallback('success');
-    }, 300);
+    const timer = setTimeout(function(error) {
+      rejectCallback({
+        error: `${customLoadName} - load script async promise rejected`
+      });
+      clearTimeout(timer);
+    }, FORCED_TIMEOUT_IN_MS);
   });
 }

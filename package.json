@@ -11,7 +11,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "t": "yarn test /Users/achenwei/www/lab/reactjs-jest-playground/src/loadScriptAsync.test.js --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

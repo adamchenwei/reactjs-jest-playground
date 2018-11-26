@@ -5,7 +5,7 @@ import loadScriptAsync from './loadScriptAsync';
 
 class App extends Component {
   componentDidMount() {
-    loadScriptAsync('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'bootstraper', 3000)
+    loadScriptAsync('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 1, 'bootstraper')
       .then((data) => {
         console.log('successs')
         console.log(data)
